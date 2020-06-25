@@ -1,35 +1,7 @@
 // Creating variables
-class Enemies{
-	constructor(){
-		this.x=0;
-		this.y=0;
-		this.dx=0;
-		this.dy=0;
-		this.speed=1;
-		this.dist;
-	}
-	randomize(){
-		this.x=Math.random()*800;
-		this.y=Math.random()*600;
-	}
-	draw(){
-		context.beginPath();
-		context.arc(this.x, this.y, 30, 0, 2*Math.PI);
-		context.closePath();
-		context.stroke();
-	}
-	update(){
-		let d=dist(mouseX, mouseY, this.x, this.y)
-		this.dx=(mouseX-this.x)/d*this.speed
-		this.dy=(mouseY-this.y)/d*this.speed
-		if(d<5){
-			this.dx=0;
-			this.dy=0;
-		}
-		this.x+=this.dx;
-		this.y+=this.dy;
-	}
-}
+let choveche=new Choveche();
+choveche.randomize();
+
 function dist(x1, y1, x2, y2){
 	return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
@@ -39,7 +11,6 @@ for(let i=0;i<brEnemies;i++){
 	enemies[i]=new Enemies();
 	enemies[i].randomize();
 }
-console.log((enemies))
 
 function update() {
 	//console.log(enemies);
@@ -47,6 +18,7 @@ function update() {
 	for(let i=0;i<brEnemies;i++){
 		enemies[i].update();
 	}
+	choveche.update();
 }
 
 function draw() {
@@ -54,6 +26,7 @@ function draw() {
 	for(let i=0;i<brEnemies;i++){
 		enemies[i].draw();
 	}
+	choveche.draw();
 }
 
 function keyup(key) {
