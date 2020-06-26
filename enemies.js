@@ -9,6 +9,12 @@ class Enemies{
 	randomize(){
 		this.x=Math.random()*800;
 		this.y=Math.random()*600;
+		if(dist(this.x, this.y, choveche.x, choveche.y)<100){
+			this.x=canvas.width-choveche.x;
+			this.y=canvas.height-choveche.y;
+		}
+		console.log(enemies, choveche);
+		
 	}
 	draw(){
 		context.beginPath();
@@ -22,6 +28,9 @@ class Enemies{
 		let d=dist(choveche.x, choveche.y, this.x, this.y)
 		this.dx=(choveche.x-this.x)/d*this.speed
 		this.dy=(choveche.y-this.y)/d*this.speed
+		if(d<61){
+			isDead=1;
+		}
 		if(d<5){
 			this.dx=0;
 			this.dy=0;

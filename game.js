@@ -1,7 +1,7 @@
 // Creating variables
 let choveche=new Choveche();
 choveche.randomize();
-
+var isDead=0;
 function dist(x1, y1, x2, y2){
 	return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
@@ -13,12 +13,14 @@ for(let i=0;i<brEnemies;i++){
 }
 
 function update() {
-	//console.log(enemies);
 	// Napisanoto tuk se izpulnqva otnovo i otnovo mnogo puti v sekunda
-	for(let i=0;i<brEnemies;i++){
-		enemies[i].update();
+	while(isDead==0){
+		for(let i=0;i<brEnemies;i++){
+			enemies[i].update();
+		}
+		choveche.update();
 	}
-	choveche.update();
+	
 }
 
 function draw() {
@@ -27,6 +29,9 @@ function draw() {
 		enemies[i].draw();
 	}
 	choveche.draw();
+	/*if(isDead==1){
+		context.fillRect(0, 0, 800, 600);
+	}*/
 }
 
 function keyup(key) {
