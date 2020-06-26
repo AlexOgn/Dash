@@ -1,34 +1,36 @@
 // Creating variables
 let choveche=new Choveche();
-choveche.randomize();
+
+let Canvas = document.getElementById("canvas-id");
 var isDead=0;
+
 function dist(x1, y1, x2, y2){
 	return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
 let enemies=[];
 let brEnemies=5;
 for(let i=0;i<brEnemies;i++){
-	enemies[i]=new Enemies();
-	enemies[i].randomize();
+	enemies[i] = new Enemies(Canvas, choveche);
+	//enemies[i].randomize(Canvas, choveche);
 }
 
 function update() {
 	// Napisanoto tuk se izpulnqva otnovo i otnovo mnogo puti v sekunda
-	while(isDead==0){
+	//while(isDead==0){
+		choveche.update();
 		for(let i=0;i<brEnemies;i++){
 			enemies[i].update();
 		}
-		choveche.update();
-	}
+	//}
 	
 }
 
 function draw() {
 	// tuk naprogramirai kakvo da se risuva
 	for(let i=0;i<brEnemies;i++){
-		enemies[i].draw();
+		enemies[i].Draw();
 	}
-	choveche.draw();
+	choveche.Draw();
 	/*if(isDead==1){
 		context.fillRect(0, 0, 800, 600);
 	}*/
