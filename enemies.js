@@ -1,22 +1,21 @@
 class Enemies{
-	constructor(){
+	constructor(canvas, choveche){
 		this.x=0;
 		this.y=0;
 		this.dx=0;
 		this.dy=0;
 		this.speed=1;
+		this.randomize(canvas, choveche);
 	}
-	randomize(){
-		this.x=Math.random()*800;
-		this.y=Math.random()*600;
-		if(dist(this.x, this.y, choveche.x, choveche.y)<100){
-			this.x=canvas.width-choveche.x;
-			this.y=canvas.height-choveche.y;
-		}
-		console.log(enemies, choveche);
+	randomize(canvas, choveche){
+		// this.x=Math.random()*700;
+		// this.y=Math.random()*700;
+			this.x = canvas.width - choveche.x;
+			this.y = canvas.height - choveche.y;
+		//console.log(enemies, choveche);
 		
 	}
-	draw(){
+	Draw(){
 		context.beginPath();
 		context.arc(this.x, this.y, 30, 0, 2*Math.PI);
 		context.closePath();
