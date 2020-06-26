@@ -8,12 +8,8 @@ class Enemies{
 		this.randomize(canvas, choveche);
 	}
 	randomize(canvas, choveche){
-		// this.x=Math.random()*700;
-		// this.y=Math.random()*700;
-			this.x = canvas.width - choveche.x;
-			this.y = canvas.height - choveche.y;
-		//console.log(enemies, choveche);
-		
+		this.x = canvas.width - choveche.x+Math.random()*500;
+		this.y = canvas.height - choveche.y+Math.random()*500;
 	}
 	Draw(){
 		context.beginPath();

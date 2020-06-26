@@ -16,12 +16,12 @@ for(let i=0;i<brEnemies;i++){
 
 function update() {
 	// Napisanoto tuk se izpulnqva otnovo i otnovo mnogo puti v sekunda
-	//while(isDead==0){
+	if(isDead==0){
 		choveche.update();
 		for(let i=0;i<brEnemies;i++){
 			enemies[i].update();
 		}
-	//}
+	}
 	
 }
 
