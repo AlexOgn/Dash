@@ -8,8 +8,15 @@ class Enemies{
 		this.randomize(canvas, choveche);
 	}
 	randomize(canvas, choveche){
-		this.x = canvas.width - choveche.x+Math.random()*500;
-		this.y = canvas.height - choveche.y+Math.random()*500;
+		// this.x=Math.random()*700;
+		// this.y=Math.random()*700;
+		let dst = dist(this.x, this.y, choveche.x, choveche.y);
+		if(dst >= 50){
+			this.x = canvas.width - choveche.x + Math.random()*500;
+			this.y = canvas.height - choveche.y + Math.random()*500;
+		}
+		//console.log(enemies, choveche);
+		
 	}
 	Draw(){
 		context.beginPath();

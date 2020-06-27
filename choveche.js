@@ -19,14 +19,17 @@ class Choveche{
 		context.stroke();
 	}
 	update(){
-		let d=dist(mouseX, mouseY, this.x, this.y)
-		this.dx=(mouseX-this.x)/d*this.speed
-		this.dy=(mouseY-this.y)/d*this.speed
+		let d = dist(mouseX, mouseY, this.x, this.y);
+
+		this.dx=(mouseX-this.x)/d * this.speed * dash;
+		this.dy=(mouseY-this.y)/d * this.speed * dash;
+
 		if(d<5){
 			this.dx=0;
 			this.dy=0;
 		}
-		this.x+=this.dx;
-		this.y+=this.dy;
+
+		this.x += this.dx;
+		this.y += this.dy;
 	}
 }
