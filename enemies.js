@@ -18,7 +18,7 @@ class Enemies{
 		//console.log(enemies, choveche);
 		
 	}
-	Draw(){
+	draw(){
 		context.beginPath();
 		context.arc(this.x, this.y, 30, 0, 2*Math.PI);
 		context.closePath();
@@ -31,7 +31,12 @@ class Enemies{
 		this.dx=(choveche.x-this.x)/d*this.speed
 		this.dy=(choveche.y-this.y)/d*this.speed
 		if(d<61){
-			isDead=1;
+			if(isDashing==true){
+				this.x=NaN;
+				numberOfDead++;
+			}else{
+				isDead=1;
+			}
 		}
 		if(d<5){
 			this.dx=0;

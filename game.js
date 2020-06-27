@@ -1,15 +1,13 @@
 // Creating variables
-var dash = 1, maxDash = 7, duration = 1000;
+var dash = 1, maxDash = 10, duration = 200;
+
+var numberOfDead=0;
+var isDashing = false;
+var isWin=0;
+var alerted=false;
 
 let choveche=new Choveche();
 let Canvas = document.getElementById("canvas-id");
-
-window.addEventListener("keydown", (event) => {
-	if(event.code == "Space"){
-		dash = maxDash;
-		setTimeout(() => {dash = 1}, duration);
-	}
-})
 
 function dist(x1, y1, x2, y2){
 	return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
@@ -23,24 +21,39 @@ for(let i=0;i<brEnemies;i++){
 
 function update() {
 	// Napisanoto tuk se izpulnqva otnovo i otnovo mnogo puti v sekunda
-	if(!isDead) {
+	
+	if(numberOfDead==brEnemies){
+		brEnemies--;
+		isWin=1;
+	}
+	if(isWin==1 && alerted==false){
+		alert("You Win!");
+		alerted=true;
+	}
+	if(isDead==0 || isWin!=0){
 		choveche.update();
 		for(let i=0;i<brEnemies;i++){
 			enemies[i].update();
 		}
+		console.log(isDead, isWin)
 	}
 	
+	
+	if(isKeyPressed[32]){
+		dash = maxDash;
+		isDashing = true;
+		setTimeout(() => {dash = 1}, duration);
+	}else{
+		isDashing = false;
+	}
 }
 
 function draw() {
 	// tuk naprogramirai kakvo da se risuva
 	for(let i=0;i<brEnemies;i++){
-		enemies[i].Draw();
+		enemies[i].draw();
 	}
-	choveche.Draw();
-	/*if(isDead==1){
-		context.fillRect(0, 0, 800, 600);
-	}*/
+	choveche.draw();
 }
 
 function keyup(key) {

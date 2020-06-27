@@ -11,7 +11,7 @@ class Choveche{
 		this.x=Math.random()*800;
 		this.y=Math.random()*600;
 	}
-	Draw(){
+	draw(){
 		context.beginPath();
 		context.arc(this.x, this.y, 30, 0, 2*Math.PI);
 		context.closePath();
